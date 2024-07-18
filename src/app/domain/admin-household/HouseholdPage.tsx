@@ -10,7 +10,7 @@ import {
 import PrimaryButton from '../../shared/components/buttons/PrimaryButton';
 import DropdownButton from '../../shared/components/dropdown/dropdownButton';
 import Cart from '../../shared/components/cart/Cart';
-import './HouseholdPage.scss';
+import './Householdpage.scss';
 import HouseholdTable from './household/HouseholdTable';
 import SearchBar from '../../shared/components/fields/SearchBar';
 
@@ -40,11 +40,11 @@ const HouseholdPage: React.FC = () => {
     <div className="household">
       <div className="household-header-button">
         <div>
-          <h1>HOUSEHOLD PAGE</h1>
+          <h1>Household Page</h1>
         </div>
         <div className="header-buttons">
           <PrimaryButton
-            buttonText="New Household"
+            buttonText="New household"
             icon={FaPlus}
             handleButtonClick={() =>
               handleButtonClick('/dashboard/add-household')
@@ -96,7 +96,10 @@ const HouseholdPage: React.FC = () => {
       </div>
 
       <div className="household-search-sort">
-        <SearchBar placeholder="Search..." onSearch={handleSearch} />
+        <SearchBar
+          placeholder="Search person / household"
+          onSearch={handleSearch}
+        />
         <DropdownButton
           buttonText="View Profile"
           options={['Complete', 'Incomplete']}

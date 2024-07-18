@@ -31,17 +31,19 @@ const Cart: React.FC<CartProps> = ({
   };
 
   return (
-    <div className="dashboard-cart">
-      <div className="cart">
-        <div className="cart-header">
-          <h3>{title}</h3>
-          <div className="cart-icon">
-            <Icon size={30} /> {/* Render the icon */}
-          </div>
+    <div className="cart">
+      <div className="cart-header">
+        <div className="cart-title">
+          <h4>{title}</h4>
         </div>
-        <p style={{ color: getValueColor(title) }}>{value}</p>
-        <p className="description">{description}</p>
+        <div className="cart-icon">
+          <Icon size={40} /> {/* Render the icon */}
+        </div>
       </div>
+      <p className="value" style={{ color: getValueColor(title) }}>
+        {value}
+      </p>
+      <p className="description">{description}</p>
     </div>
   );
 };

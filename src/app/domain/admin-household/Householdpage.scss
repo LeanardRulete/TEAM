@@ -13,12 +13,13 @@
 // }
 
 .household {
+  height: 100vh;
   .household-header-button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: #f0f0f0; /* Example background color */
+    padding: 0px 5px;
+    // background-color: #f0f0f0; /* Example background color */
 
     h1 {
       margin: 0;
@@ -33,9 +34,9 @@
   .household-cart {
     display: flex;
     gap: 20px;
-    padding: 20px;
+    padding: 1px 10px;
     background-color: #ffffff; /* Example background color */
-    border: 1px solid #e0e0e0; /* Example border */
+    // border: 1px solid #e0e0e0; /* Example border */
     border-radius: 8px; /* Example border radius */
     margin-top: 20px;
 
@@ -47,10 +48,9 @@
   .household-search-sort {
     display: flex;
     gap: 20px;
+    padding: 1px 20px;
     margin-top: 20px;
-    padding: 10px;
     background-color: #ffffff; /* Example background color */
-    border: 1px solid #e0e0e0; /* Example border */
     border-radius: 8px; /* Example border radius */
     align-items: center; /* Align items center vertically */
     flex-wrap: wrap; /* Allow wrapping to prevent overflow */
@@ -73,14 +73,14 @@
     }
 
     .search-bar {
+      width: 100px;
       flex: 1; /* Expand search bar to fill available space */
     }
   }
 
   .household-table {
-    padding: 20px;
+    padding: 1px 1px;
     background-color: #ffffff; /* Example background color */
-    border: 1px solid #e0e0e0; /* Example border */
     border-radius: 8px; /* Example border radius */
     margin-top: 20px;
   }

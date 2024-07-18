@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../../../core/utils/axiosInstance';
 import './HouseholdTable.scss';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaCheck, FaEdit, FaPlus, FaTimes, FaTrash } from 'react-icons/fa';
+import PrimaryButton from '../../../shared/components/buttons/PrimaryButton';
+import ReactPaginate from 'react-paginate';
 
 interface Inhabitant {
   inhabitantId: number;
@@ -35,7 +37,9 @@ interface Household {
 
 const HouseholdTable: React.FC = () => {
   const [households, setHouseholds] = useState<Household[]>([]);
+  const [currentPage, setCurrentPage] = useState(0);
   const navigate = useNavigate();
+  const itemsPerPage = 5; // Adjust the number of items per page as needed
 
   useEffect(() => {
     axiosInstance
@@ -76,91 +80,159 @@ const HouseholdTable: React.FC = () => {
     }
   };
 
+  const handlePageClick = (data: { selected: number }) => {
+    setCurrentPage(data.selected);
+  };
+
+  const offset = currentPage * itemsPerPage;
+  const currentHouseholds = households.slice(offset, offset + itemsPerPage);
+
   return (
-    <div className="household-list-container">
-      <h1>Household List</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Birthday</th>
-            <th>Gender</th>
-            <th>Mobile</th>
-            <th>Civil Status</th>
-            <th>Household Role</th>
-            <th>Date</th>
-            <th>Voter</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {households.map((household) => (
-            <React.Fragment key={household.householdUuid}>
-              <tr>
-                <td colSpan={10} className="household-info">
-                  <div
-                    className="household-details"
-                    onClick={() => handleRowClick(household.householdUuid)}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    {`${household.householdNumber} ${household.householdName} ${
-                      household.streetName || ''
-                    } ${household.subdivision || ''} ${household.zone || ''} ${
-                      household.sitio || ''
-                    } ${household.purok || ''}`}
-                  </div>
-                  <div className="household-action">
-                    <button
-                      onClick={() =>
-                        handleAddInhabitant(household.householdUuid)
-                      }
-                    >
-                      Add Inhabitant
-                    </button>
-                  </div>
-                </td>
-              </tr>
-              {household.inhabitants.map((inhabitant) => (
-                <tr key={inhabitant.inhabitantUuid}>
-                  <td>{`${inhabitant.firstName} ${
-                    inhabitant.middleName || ''
-                  } ${inhabitant.lastName}`}</td>
-                  <td>
-                    {inhabitant.birthday
-                      ? new Date(inhabitant.birthday).toLocaleDateString()
-                      : ''}
-                  </td>
-                  <td>{inhabitant.gender}</td>
-                  <td>{inhabitant.mobileNumber}</td>
-                  <td>{inhabitant.civilStatus}</td>
-                  <td>{inhabitant.householdRole}</td>
-                  <td>{new Date(inhabitant.createdAt).toLocaleDateString()}</td>
-                  <td>{inhabitant.isRegisteredVoter ? 'Yes' : 'No'}</td>
-                  <td>Status</td>
-                  <td>
-                    <button
-                      onClick={() =>
-                        handleEdit(
-                          inhabitant.inhabitantUuid,
-                          household.householdUuid
-                        )
-                      }
-                    >
-                      <FaEdit />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(inhabitant.inhabitantUuid)}
-                    >
-                      <FaTrash />
-                    </button>
+    <div className="household-inhabitantlist-container">
+      <div className="table-wrapper">
+        <table className="datatable">
+          <thead className="datatable-header">
+            <tr>
+              <th className="datatable-header-column">
+                <div className="header-content">
+                  <span className="column-title">Name</span>
+                </div>
+              </th>
+              <th className="datatable-header-column">
+                <div className="header-content">
+                  <span className="column-title">Birthday</span>
+                </div>
+              </th>
+              <th className="datatable-header-column">
+                <div className="header-content">
+                  <span className="column-title">Gender</span>
+                </div>
+              </th>
+              <th className="datatable-header-column">
+                <div className="header-content">
+                  <span className="column-title">Mobile</span>
+                </div>
+              </th>
+              <th className="datatable-header-column">
+                <div className="header-content">
+                  <span className="column-title">Civil Status</span>
+                </div>
+              </th>
+              <th className="datatable-header-column">
+                <div className="header-content">
+                  <span className="column-title">Household Role</span>
+                </div>
+              </th>
+              <th className="datatable-header-column">
+                <div className="header-content">
+                  <span className="column-title">Voter</span>
+                </div>
+              </th>
+              <th className="datatable-header-column">
+                <div className="header-content">
+                  <span className="column-title">Status</span>
+                </div>
+              </th>
+              <th className="datatable-header-column">
+                <div className="header-content">
+                  <span className="column-title">Actions</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentHouseholds.map((household) => (
+              <React.Fragment key={household.householdUuid}>
+                <tr>
+                  <td colSpan={9} className="household-info">
+                    <div className="household-name-layout">
+                      <div
+                        className="household-details"
+                        onClick={() => handleRowClick(household.householdUuid)}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        {`${household.householdNumber} ${
+                          household.householdName
+                        } ${household.streetName || ''} ${
+                          household.subdivision || ''
+                        } ${household.zone || ''} ${household.sitio || ''} ${
+                          household.purok || ''
+                        }`}
+                      </div>
+                      <div className="household-action">
+                        <PrimaryButton
+                          buttonText="  Inhabitant"
+                          icon={FaPlus}
+                          handleButtonClick={() =>
+                            handleAddInhabitant(household.householdUuid)
+                          }
+                          className="inhabitant"
+                        />
+                      </div>
+                    </div>
                   </td>
                 </tr>
-              ))}
-            </React.Fragment>
-          ))}
-        </tbody>
-      </table>
+                {household.inhabitants.map((inhabitant) => (
+                  <tr key={inhabitant.inhabitantUuid}>
+                    <td>{`${inhabitant.firstName} ${
+                      inhabitant.middleName || ''
+                    } ${inhabitant.lastName}`}</td>
+                    <td>
+                      {inhabitant.birthday
+                        ? new Date(inhabitant.birthday).toLocaleDateString()
+                        : ''}
+                    </td>
+                    <td>{inhabitant.gender}</td>
+                    <td>{inhabitant.mobileNumber}</td>
+                    <td>{inhabitant.civilStatus}</td>
+                    <td>{inhabitant.householdRole}</td>
+                    <td>{inhabitant.isRegisteredVoter ? 'Yes' : 'No'}</td>
+                    <td>Status</td>
+                    <td>
+                      <button
+                        onClick={() =>
+                          handleEdit(
+                            inhabitant.inhabitantUuid,
+                            household.householdUuid
+                          )
+                        }
+                      >
+                        <FaEdit />
+                      </button>
+                      <button
+                        className="inhabitant-button"
+                        onClick={() => handleDelete(inhabitant.inhabitantUuid)}
+                      >
+                        <FaTrash />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+                <tr>
+                  <td colSpan={9} className="total-occupants">
+                    <div className="total-occupants-content">
+                      <span>Total Occupants:</span>
+                      <span>{household.inhabitants.length}</span>
+                    </div>
+                  </td>
+                </tr>
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <ReactPaginate
+        previousLabel={'Previous'}
+        nextLabel={'Next'}
+        breakLabel={'...'}
+        breakClassName={'break-me'}
+        pageCount={Math.ceil(households.length / itemsPerPage)}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={handlePageClick}
+        containerClassName={'pagination'}
+        activeClassName={'active'}
+      />
     </div>
   );
 };

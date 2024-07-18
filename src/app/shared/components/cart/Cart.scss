@@ -1,22 +1,91 @@
-// Cart.scss
+// .cart {
+//   border: 1px solid #a7a4a4;
+//   border-radius: 20px; /* Rounded corners for modern look */
+//   padding: 20px 10px; /* Increased padding for more space */
+//   text-align: center;
+//   background-color: #f2f2f2; /* Light background */
+//   box-shadow: 0 0 10px rgba(22, 22, 22, 0.2); /* Subtle shadow for depth */
+//   margin-bottom: 10px; /* Add space between each cart */
 
+//   h3 {
+//     margin: 0;
+//     font-size: 1.8em; /* Larger font size for title */
+//     color: #333; /* Darken heading color for contrast */
+//   }
+
+//   p {
+//     // font-size: 2.5em; /* Larger font size for value */
+//     // margin: 10px 0 0;
+//   }
+// }
 .cart {
-  border: 1px solid #a7a4a4;
+  border: 1px solid#dddddd;
+  // #dddddd;
   border-radius: 20px; /* Rounded corners for modern look */
-  padding: 20px 10px; /* Increased padding for more space */
+  padding: 10px 10px; /* Increased padding for more space */
   text-align: center;
-  background-color: #f2f2f2; /* Light background */
+  background-color: #f4f4f4; /* Light background */
   box-shadow: 0 0 10px rgba(22, 22, 22, 0.2); /* Subtle shadow for depth */
-  margin-bottom: 20px; /* Add space between each cart */
+  margin-bottom: 10px; /* Add space between each cart */
 
-  h3 {
-    margin: 0;
-    font-size: 1.8em; /* Larger font size for title */
-    color: #333; /* Darken heading color for contrast */
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* Add space below the header */
   }
 
-  p {
-    font-size: 2.5em; /* Larger font size for value */
-    margin: 10px 0 0;
+  .cart-title {
+    flex: 1;
+    h4 {
+      margin: 0;
+      font-size: 1.4em; /* Larger font size for title */
+      color: #333; /* Darken heading color for contrast */
+    }
+  }
+
+  .cart-icon {
+    margin-left: 10px; /* Add some space between the title and the icon */
+  }
+
+  .value {
+    font-size: 1.9em; /* Larger font size for value */
+    margin: 10px 0; /* Add margin to space it appropriately */
+  }
+
+  .description {
+    font-size: 1em; /* Adjust font size for the description if needed */
+  }
+  @media (max-width: 768px) {
+    .cart-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cart-title,
+    .cart-icon {
+      margin: 5px 0;
+      text-align: left;
+    }
+
+    .value {
+      font-size: 2em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 15px 5px;
+
+    .cart-title h4 {
+      font-size: 1.5em;
+    }
+
+    .value {
+      font-size: 1.8em;
+    }
+
+    .description {
+      font-size: 0.9em;
+    }
   }
 }

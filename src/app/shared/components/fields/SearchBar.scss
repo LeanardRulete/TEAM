@@ -5,6 +5,7 @@
   border-radius: 30px; /* Rounded border */
   padding: 5px 10px;
   background-color: white;
+  width: 100px; /* Adjust the width of the search bar as needed */
 
   input {
     border: none;
@@ -12,6 +13,7 @@
     flex: 1;
     padding: 10px;
     border-radius: 30px; /* Ensure input field is rounded */
+    width: calc(100% - 30px); /* Adjust width of input field minus padding */
   }
 
   .search-icon {
