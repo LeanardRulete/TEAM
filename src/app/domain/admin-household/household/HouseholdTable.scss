@@ -17,14 +17,14 @@
 }
 
 thead {
-  background-color: #e9e9e9;
+  background-color: #d8daca;
 }
 
 th {
   padding: 15px;
   text-align: left;
   font-weight: 600;
-  color: #333;
+  color: #000000;
   border-bottom: 2px solid #ddd;
 }
 
@@ -49,12 +49,13 @@ td {
   flex: 1;
   cursor: pointer;
   color: #007bff;
-  text-decoration: underline;
+  font-weight: 700;
 }
 
 .household-action {
   flex-shrink: 0;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 .inhabitant {
@@ -102,6 +103,10 @@ button:hover {
 
 .total-occupants-right {
   text-align: right;
+}
+
+.total-occupants-content {
+  font-weight: 700;
 }
 
 @media (max-width: 768px) {

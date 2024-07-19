@@ -1,0 +1,50 @@
+// Checkbox.scss
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  //   gap: 10px; // Space between checkbox and label
+
+  .checkbox {
+    appearance: none;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    width: 24px; // Slightly larger for better visibility
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s, border-color 0.3s;
+
+    &:checked {
+      //   background-color: #2ccd5b; // Green color for checked state
+      border-color: #2ccd5b;
+    }
+
+    &:checked::after {
+      content: '';
+      color: #2ccd5b;
+      position: absolute;
+      left: 6px;
+      top: 10px;
+      width: 6px;
+      height: 12px;
+      border: solid #fff;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+    }
+
+    &:hover {
+      border-color: #bbb;
+    }
+  }
+
+  .checkbox-label {
+    font-size: 1rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    cursor: pointer; // Makes label clickable
+  }
+}

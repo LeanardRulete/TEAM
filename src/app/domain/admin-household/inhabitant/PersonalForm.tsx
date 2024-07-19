@@ -2,6 +2,7 @@ import React from 'react';
 import FormInputField from '../../../shared/components/fields/FormInputFields';
 import Dropdown from '../../../shared/components/dropdown/Dropdown';
 import Checkbox from '../../../shared/components/fields/Checkbox';
+import './PersonalForm.scss';
 
 export enum householdRole {
   SON = 'Son',
@@ -67,18 +68,15 @@ const PersonalForm: React.FC<PersonalFormProps> = ({
       <section className="personal-left-form">
         <h4>Personal</h4>
         <label>Profile Photo</label>
-        <br></br>
         <input type="file" name="profilePhoto" onChange={handleFileChange} />
-        <br></br>
 
         <label>Household Role</label>
-        <Dropdown<householdRole>
+        <Dropdown
           name="householdRole"
           values={householdRole}
           selectedValue={formData.householdRole}
           onChange={(value) => handleDropdownChange('householdRole', value)}
         />
-        <br></br>
 
         <Checkbox
           name="isRepresentative"
@@ -87,32 +85,31 @@ const PersonalForm: React.FC<PersonalFormProps> = ({
             handleCheckboxChange('isRepresentative', checked)
           }
         />
-        <label>Is Representative</label>
-        <br></br>
+
         <FormInputField
           type="text"
           name="firstName"
-          placeholder="Firstname"
+          placeholder="First Name"
           value={formData.firstName}
           onChange={handleChange}
         />
         <FormInputField
           type="text"
           name="middleName"
-          placeholder="Middlename"
+          placeholder="Middle Name"
           value={formData.middleName}
           onChange={handleChange}
         />
         <FormInputField
           type="text"
           name="lastName"
-          placeholder="Lastname"
+          placeholder="Last Name"
           value={formData.lastName}
           onChange={handleChange}
         />
 
         <label>Inhabitant Gender</label>
-        <Dropdown<inhabitantGender>
+        <Dropdown
           name="gender"
           values={inhabitantGender}
           selectedValue={formData.gender}
@@ -139,7 +136,7 @@ const PersonalForm: React.FC<PersonalFormProps> = ({
         />
 
         <label>Civil Status</label>
-        <Dropdown<inhabitantCivilStatus>
+        <Dropdown
           name="civilStatus"
           values={inhabitantCivilStatus}
           selectedValue={formData.civilStatus}
@@ -148,7 +145,7 @@ const PersonalForm: React.FC<PersonalFormProps> = ({
         <FormInputField
           type="text"
           name="mobileNumber"
-          placeholder="Email"
+          placeholder="Mobile Number"
           value={formData.mobileNumber}
           onChange={handleChange}
         />
@@ -156,5 +153,4 @@ const PersonalForm: React.FC<PersonalFormProps> = ({
     </div>
   );
 };
-
 export default PersonalForm;

@@ -6,8 +6,8 @@ import DashboardChart from '../../shared/components/doughnutChart/DashboardChart
 const DashboardPage: React.FC = () => {
   return (
     <div className="layout">
-      <div className='dashboard-header'>
-      <h1>Barangay Dashboard</h1>
+      <div className="dashboard-header">
+        <h1>Barangay Dashboard</h1>
       </div>
       <div className="dashboard-card">
         <DashboardCards />

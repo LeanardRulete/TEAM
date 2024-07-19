@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   FaHome,
@@ -13,9 +13,35 @@ import Cart from '../../shared/components/cart/Cart';
 import './Householdpage.scss';
 import HouseholdTable from './household/HouseholdTable';
 import SearchBar from '../../shared/components/fields/SearchBar';
+import axiosInstance from '../../core/utils/axiosInstance';
 
 const HouseholdPage: React.FC = () => {
   const navigate = useNavigate();
+  const [statistics, setStatistics] = useState({
+    totalHouseholds: 0,
+    totalInhabitants: 0,
+    totalOtherInhabitants: 0,
+    totalOtherInhabitantVoters: 0,
+    totalOtherInhabitantNonVoters: 0,
+    totalVoters: 0,
+    totalNonVoters: 0,
+    totalNewHouseholds: 0,
+    totalNewInhabitants: 0,
+    totalNewOtherInhabitants: 0,
+  });
+
+  useEffect(() => {
+    const fetchStatistics = async () => {
+      try {
+        const response = await axiosInstance.get('/statistics');
+        setStatistics(response.data);
+      } catch (error) {
+        console.error('Error fetching statistics:', error);
+      }
+    };
+
+    fetchStatistics();
+  }, []);
 
   const handleButtonClick = async (path: string) => {
     navigate(path);
@@ -64,7 +90,7 @@ const HouseholdPage: React.FC = () => {
         <div className="household-cart-item">
           <Cart
             title="Households"
-            value={150}
+            value={statistics.totalHouseholds}
             icon={FaHome}
             description="Total households for this year"
           />
@@ -72,7 +98,7 @@ const HouseholdPage: React.FC = () => {
         <div className="household-cart-item">
           <Cart
             title="Inhabitants"
-            value={450}
+            value={statistics.totalInhabitants}
             icon={FaUsers}
             description="Total inhabitants for this year"
           />
@@ -80,7 +106,7 @@ const HouseholdPage: React.FC = () => {
         <div className="household-cart-item">
           <Cart
             title="Voters"
-            value={200}
+            value={statistics.totalVoters}
             icon={FaVoteYea}
             description="Total voters for this year"
           />
@@ -88,7 +114,7 @@ const HouseholdPage: React.FC = () => {
         <div className="household-cart-item">
           <Cart
             title="Non-Voters"
-            value={50}
+            value={statistics.totalNonVoters}
             icon={FaUserSlash}
             description="Total non-voters for this year"
           />

@@ -1,4 +1,4 @@
-.personal-layout {
+.address-layout {
   display: flex;
   //   padding: 20px;
   //   align-items: center;
@@ -8,14 +8,14 @@
   //   border-radius: 8px;
   //   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
-  .personal-left-form,
-  .contact-right-form {
+  .address-left-form,
+  .address-right-location {
     flex: 1; /* Make both sections flexible to take equal space */
     margin-right: 10px; /* Add margin between sections */
     background-color: #fff;
     padding: 20px;
-    // border-radius: 8px;
-    // box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 
     &:last-of-type {
       margin-right: 0; /* Remove margin from the last section */
@@ -38,19 +38,8 @@
       margin-bottom: 20px;
     }
 
-    .dropdown,
-    .checkbox,
     .form-input {
       margin-bottom: 20px;
-    }
-
-    .checkbox {
-      display: flex;
-      align-items: center;
-
-      input {
-        margin-right: 10px;
-      }
     }
 
     .form-input {
@@ -64,8 +53,8 @@
     }
   }
 
-  .personal-left-form,
-  .contact-right-form {
+  .address-left-form,
+  .address-right-form {
     display: flex;
     flex-direction: column;
   }

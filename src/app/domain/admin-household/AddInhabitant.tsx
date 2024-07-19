@@ -207,23 +207,19 @@ const AddInhabitant: React.FC = () => {
   };
 
   return (
-    <div className="Add Inhabitant">
-      <section>
+    <div className="add-inhabitant">
+      <section className="header">
         <div className="header-title">
           <h1>{isEditMode ? 'Edit Inhabitant' : 'Add New Inhabitant'}</h1>
         </div>
         <div className="header-buttons">
-          <div>
-            <button type="submit" onClick={handleSubmit}>
-              {isEditMode ? 'Update' : 'Save'}
-            </button>
-          </div>
+          <button type="submit" onClick={handleSubmit}>
+            {isEditMode ? 'Update' : 'Save'}
+          </button>
         </div>
       </section>
-      <hr></hr>
-      <div className="form">
+      <div className="form-container">
         <section className="household-header">Household Name</section>
-        <hr></hr>
         <section className="inhabitant-nav-bar">
           <h2
             onClick={() => setCurrentSection('personal')}
@@ -243,9 +239,8 @@ const AddInhabitant: React.FC = () => {
           >
             Other
           </h2>
-          <hr></hr>
         </section>
-
+        <hr />
         <section className="form-section">
           {currentSection === 'personal' && (
             <PersonalForm
@@ -256,7 +251,6 @@ const AddInhabitant: React.FC = () => {
               handleCheckboxChange={handleCheckboxChange}
             />
           )}
-
           {currentSection === 'health' && (
             <HealthForm
               formData={formData}
@@ -266,7 +260,6 @@ const AddInhabitant: React.FC = () => {
               handleBooleanChange={handleBooleanChange}
             />
           )}
-
           {currentSection === 'other' && (
             <OtherForm
               formData={formData}
@@ -281,5 +274,4 @@ const AddInhabitant: React.FC = () => {
     </div>
   );
 };
-
 export default AddInhabitant;
