@@ -7,6 +7,7 @@ interface InputFieldProps {
   icon: React.ReactNode;
   name: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  hasError?: boolean;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -15,6 +16,7 @@ const InputField: React.FC<InputFieldProps> = ({
   icon,
   name,
   onChange,
+  hasError = false,
 }) => {
   return (
     <div className="input-field">
@@ -24,6 +26,7 @@ const InputField: React.FC<InputFieldProps> = ({
         placeholder={placeholder}
         name={name}
         onChange={onChange}
+        className={hasError ? 'has-error' : ''}
       />
     </div>
   );

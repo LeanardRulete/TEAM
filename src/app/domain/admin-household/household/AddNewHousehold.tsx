@@ -166,6 +166,7 @@ const AddNewHousehold: React.FC = () => {
     <div className="add-household-container">
       <section className="add-household-header">
         <h1>{isEditMode ? 'Edit Household' : 'Add New Household'}</h1>
+
         <button type="submit" onClick={handleSubmit}>
           {isEditMode ? 'Update' : 'Save'}
         </button>
@@ -184,8 +185,9 @@ const AddNewHousehold: React.FC = () => {
           </>
         )}
       </section>
-      <div>
-        <section>
+
+      <div className="form-content">
+        <section className="navigation">
           <h2
             onClick={() => setCurrentSection('address')}
             className={currentSection === 'address' ? 'active' : ''}
@@ -198,7 +200,7 @@ const AddNewHousehold: React.FC = () => {
           >
             Details
           </h2>
-          <hr></hr>
+          <hr />
         </section>
 
         {currentSection === 'address' && (

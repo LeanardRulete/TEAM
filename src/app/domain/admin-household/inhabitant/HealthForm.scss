@@ -1,25 +1,24 @@
-.personal-layout {
+.health-layout {
   display: flex;
-  //   padding: 20px;
-  //   align-items: center;
   height: 100%; /* Ensure it takes full height of the parent container */
-  width: 100%;
-  //   background-color: #f9f9f9;
-  //   border-radius: 8px;
-  //   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ensure it takes full width of the parent container */
+  padding: 20px;
+  background-color: white;
+  box-sizing: border-box;
 
-  .personal-left-form,
-  .contact-right-form {
+  .general-left-form,
+  .pregnancy-right-form {
     flex: 1; /* Make both sections flexible to take equal space */
-    margin-right: 10px; /* Add margin between sections */
+    margin-right: 20px; /* Add margin between sections */
     background-color: #fff;
     padding: 20px;
-    // border-radius: 8px;
-    // box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 
     &:last-of-type {
       margin-right: 0; /* Remove margin from the last section */
     }
+
     h4 {
       font-size: 20px;
       margin-bottom: 20px;
@@ -33,20 +32,15 @@
       color: #666;
     }
 
-    input[type='file'] {
-      display: block;
-      margin-bottom: 20px;
-    }
-
     .dropdown,
-    .checkbox,
     .form-input {
       margin-bottom: 20px;
     }
 
-    .checkbox {
+    .checkbox-group {
       display: flex;
       align-items: center;
+      margin-bottom: 20px;
 
       input {
         margin-right: 10px;
@@ -62,11 +56,5 @@
         font-size: 16px;
       }
     }
-  }
-
-  .personal-left-form,
-  .contact-right-form {
-    display: flex;
-    flex-direction: column;
   }
 }

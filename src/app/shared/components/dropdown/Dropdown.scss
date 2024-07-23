@@ -1,0 +1,30 @@
+.dropdown-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.dropdown-select {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+  }
+
+  &:hover {
+    border-color: #007bff;
+  }
+
+  option {
+    padding: 10px;
+  }
+}

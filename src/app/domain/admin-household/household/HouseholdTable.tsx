@@ -211,7 +211,7 @@ const HouseholdTable: React.FC = () => {
                 <tr>
                   <td colSpan={9} className="total-occupants">
                     <div className="total-occupants-content">
-                      <span>Total Occupants:</span>
+                      <span>Total Occupants: </span>
                       <span>{household.inhabitants.length}</span>
                     </div>
                   </td>

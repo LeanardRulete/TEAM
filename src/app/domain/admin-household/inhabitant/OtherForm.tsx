@@ -4,6 +4,7 @@ import Dropdown from '../../../shared/components/dropdown/Dropdown';
 import BooleanSelect from '../../../shared/components/dropdown/BooleanSelect';
 import { InhabitantFormData } from '../AddInhabitant';
 import Checkbox from '../../../shared/components/fields/Checkbox';
+import './HealthForm.scss';
 
 export enum studentDetails {
   ELEMENTARY = 'Elementary',

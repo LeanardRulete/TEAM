@@ -1,4 +1,5 @@
 import React from 'react';
+import './Checkbox.scss';
 
 interface CheckboxProps {
   name: string;
@@ -12,12 +13,15 @@ const Checkbox: React.FC<CheckboxProps> = ({ name, checked, onChange }) => {
   };
 
   return (
-    <input
-      name={name}
-      type="checkbox"
-      checked={checked}
-      onChange={handleChange}
-    />
+    <label className="checkbox-wrapper">
+      <input
+        className="checkbox"
+        type="checkbox"
+        checked={checked}
+        onChange={handleChange}
+      />
+      <span className="checkbox-label">{name}</span>
+    </label>
   );
 };
 

@@ -3,6 +3,7 @@ import FormInputField from '../../../shared/components/fields/FormInputFields';
 import Dropdown from '../../../shared/components/dropdown/Dropdown';
 import BooleanSelect from '../../../shared/components/dropdown/BooleanSelect';
 import { InhabitantFormData } from '../AddInhabitant';
+import './HealthForm.scss';
 
 export enum inhabitantBloodType {
   B_NEGATIVE = 'B RhD negative (B-)',

@@ -1,0 +1,108 @@
+.attendance-page {
+  padding: 40px;
+  font-family: 'Arial, sans-serif';
+  background-color: #f9f9f9;
+  color: #333;
+
+  .top-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+
+    button {
+      background-color: #ccff90; // Light green background
+      border: none;
+      color: #333; // Darker text color for better contrast
+      font-size: 16px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px; // Spacing between icon and text
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      border-radius: 20px; // Rounded corners to match the image
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      .icon {
+        background-color: white;
+        border-radius: 50%;
+        padding: 5px;
+      }
+
+      &:hover {
+        background-color: #b8e986; // Slightly darker green on hover
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  h2 {
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #444;
+  }
+
+  .meeting-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 16px;
+      text-align: left;
+      font-size: 16px;
+    }
+
+    th {
+      background-color: #b8e986;
+      font-weight: bold;
+    }
+
+    td.household-number {
+      font-weight: bold;
+      background-color: #f2f2f2;
+    }
+
+    th.household-number {
+      font-weight: bold;
+      background-color: #b8e986;
+    }
+
+    .penalty {
+      color: #d40606;
+      text-align: left;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  }
+
+  .scan-button {
+    background-color: #007bff; // Blue background color
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin: 20px 0; // Add some margin to the button
+    display: block;
+    margin-left: auto; // Align button to the right
+
+    &:hover {
+      background-color: #0056b3; // Darker blue on hover
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
